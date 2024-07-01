@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 import "contracts/RegisterProperty.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract NFT_Trade is ERC721URIStorage, RegisterProperty{
-    using Counters for Counters.Counter;
-    Counters.Counter private tokenID;
+    uint256 private tokenID = 0;
 
     constructor() ERC721("Asset","AT"){}
 
@@ -20,8 +17,8 @@ contract NFT_Trade is ERC721URIStorage, RegisterProperty{
     mapping (uint256 => ListedNFT) public marketPlace;
 
     function createNFT(uint256 propertyID_As_URI) public returns (uint256){
-        tokenID.increment();
-        uint256 currentID = tokenID.current();
+        tokenID++;
+        uint256 currentID = tokenID;
         _mint(msg.sender, currentID);
         _setTokenURI(currentID, Strings.toString(propertyID_As_URI));
         return currentID;

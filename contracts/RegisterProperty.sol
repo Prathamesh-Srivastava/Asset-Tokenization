@@ -1,11 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/utils/Counters.sol";
-
 contract RegisterProperty{
-    using Counters for Counters.Counter;
-    Counters.Counter private propertyID;
+    uint256 private propertyID = 0;
 
     struct Property{
         uint256 _ID;
@@ -21,8 +18,8 @@ contract RegisterProperty{
 
     function addProperty(address propertyOwner, string memory propertyName, string memory propertyAddress,
     string memory propertyImage) public{
-        propertyID.increment();
-        uint256 currId = propertyID.current();
+        propertyID++;
+        uint256 currId = propertyID;
 
         Property memory newProperty = Property(currId,propertyOwner,propertyName,propertyAddress,propertyImage);
         
