@@ -24,11 +24,10 @@
 
 // export default Navbar;
 import React from "react";
-import { ConnectButton, SignerProvider } from "./useWallet";
+import { ConnectButton } from "./useWallet";
 
 const Navbar = () => {
   return (
-    <SignerProvider>
       <nav className="bg-none text-white py-4 px-8 flex justify-between items-center fixed top-0 w-full">
         <div className="flex items-center space-x-4">
           <img src="logo.png" alt="Logo" className="h-8" /> {/* Replace with your logo */}
@@ -40,7 +39,6 @@ const Navbar = () => {
         </div>
         <ConnectButton />
       </nav>
-    </SignerProvider>
   );
 };
 

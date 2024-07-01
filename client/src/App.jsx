@@ -10,10 +10,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center pt-10">
-        <MarketPlace/>
-      </div>
-   
+      <RegisterProperty/>
     </>
   )
 }
