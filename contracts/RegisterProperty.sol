@@ -7,6 +7,8 @@ contract RegisterProperty{
     struct Property{
         uint256 _ID;
         address owner;
+        string owner_name;
+        string owner_Id;
         string Name;
         string Address;
         string ImageUrl;
@@ -16,12 +18,12 @@ contract RegisterProperty{
     Property[] public properties;
     mapping (uint256 => uint256) IdtoIndex;
 
-    function addProperty(address propertyOwner, string memory propertyName, string memory propertyAddress,
+    function addProperty(address propertyOwner, string memory owner_name, string memory owner_Id, string memory propertyName, string memory propertyAddress,
     string memory propertyImage) public{
         propertyID++;
         uint256 currId = propertyID;
 
-        Property memory newProperty = Property(currId,propertyOwner,propertyName,propertyAddress,propertyImage);
+        Property memory newProperty = Property(currId,propertyOwner,owner_name,owner_Id,propertyName,propertyAddress,propertyImage);
         
         properties.push(newProperty);
         IdtoIndex[currId] = properties.length-1;
