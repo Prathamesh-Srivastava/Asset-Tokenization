@@ -1,8 +1,7 @@
 import React from 'react';
 
 const MarketPlace = ({ offerTitle, imgSrc, propertyTitle, category, location, shareType, description, equityInfo, ownerName }) => {
-  console.log('Props received:', offerTitle, imgSrc, propertyTitle);
-
+  
   return (
     <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center">
       <div className="bg-gray-900 p-4 rounded-lg shadow-lg text-white w-[22rem]">
