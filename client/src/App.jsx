@@ -1,4 +1,3 @@
-
 import {  BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import MarketPlace from './components/MarketPlace'
@@ -17,11 +16,11 @@ function App() {
       </div> */}
       <BrowserRouter>
       <Navbar/>
-     <Routes>
-     <Route path="/" element={<Dashboard />} />
-        <Route path="/marketplace" element={<MarketPlaceProps />} />
-        <Route path="/register" element={<RegisterProperty />} />
-     </Routes>
+        <Routes>
+        <Route path="/" element={<Dashboard />} />
+            <Route path="/marketplace" element={<MarketPlaceProps />} />
+            <Route path="/register" element={<RegisterProperty />} />
+        </Routes>
       </BrowserRouter>
 
      
