@@ -11,7 +11,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
       {/* <Navbar/>
       <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center pt-10">
         <MarketPlace/>
@@ -27,10 +26,6 @@ function App() {
 
      
    
-=======
-      <Navbar/>
-      <RegisterProperty/>
->>>>>>> 4739d74dc8d23188d7e3542ec16f718950314179
     </>
   )
 }

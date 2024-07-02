@@ -1,11 +1,7 @@
 
 import React from "react";
-<<<<<<< HEAD
 import { ConnectButton, SignerProvider } from "./useWallet";
 import { Link } from "react-router-dom";
-=======
-import { ConnectButton } from "./useWallet";
->>>>>>> 4739d74dc8d23188d7e3542ec16f718950314179
 
 const Navbar = () => {
   return (
