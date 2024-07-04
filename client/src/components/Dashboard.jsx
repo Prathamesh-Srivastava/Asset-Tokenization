@@ -20,8 +20,8 @@ const Dashboard = () => {
   }, [signer]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-blue-900 py-10 flex justify-center items-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3 -mt-20">
+    <div className="min-h-screen bg-gradient-to-b from-black to-blue-900 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {properties.length > 0 ? (
           properties.map((property, index) => (
             <MarketPlace

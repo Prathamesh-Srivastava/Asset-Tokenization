@@ -1,29 +1,72 @@
-import React from 'react';
-import MarketPlace from './MarketPlace';
+import React, { useEffect, useState } from 'react';
+import MarketPlaceCard from './MarketPlaceCard';
+import NFT_Trade_contract from "../../../artifacts/contracts/NFT_Trade.sol/NFT_Trade.json";
+import { ethers } from "ethers";
+import useSigner from "./useWallet";
 
 const MarketPlaceProps = () => {
-  const offerTitle = "Available Offer";
-  const imgSrc = "/mall.jpg"; // Replace with your image path
-  const propertyTitle = "Avenue Mall";
-  const category = "Commercial Office";
-  const location = "Mumbai";
-  const shareType = "Equity";
-  const description = "Exciting opportunity in Mumbai’s vibrant real estate market: 5% equity in a prime mall available for INR 1 crore. Secure your stake in a high-traffic location poised for growth. Don’t miss out on this lucrative investment chance!";
-  const equityInfo = "5% EQUITY FOR SALE (1CR)";
-  const ownerName = "OWNER NAME";
+  const {signer, address} = useSigner();
+  let contractAddress = "0x27490D3a6AEDC829510CFa699B9B48749E4f3bfF";
+  const contractABI = NFT_Trade_contract.abi;
+  const contract = new ethers.Contract(contractAddress,contractABI,signer);
+
+  const [ListedNFTS, setListedNFTS] = useState(null);
+  const [fetchedData, setFetchedData] = useState([]);
+
+  useEffect(()=>{
+    const getNFTS = async () =>{
+      const resArr = await contract.displayNFTS();
+      setListedNFTS(resArr);
+    }
+    getNFTS();
+  },[]);
+
+  const pullJson = async (prop) =>{
+    const fetchedUri = await contract.tokenURI(prop._Id);
+    // console.log(fetchedUri);
+
+    fetch(fetchedUri)
+    .then(respone => respone.json())
+    .then(responseData => {
+      setFetchedData(prevData => [...prevData, responseData]);
+    })
+  }
+
+  const storeJSON = async()=>{
+    setFetchedData([]);
+    for(let i = 0;i<ListedNFTS.length;i++){
+      await pullJson(ListedNFTS[i]);
+    }
+  }
+
+  useEffect(() => {
+    setFetchedData([]);
+    if (ListedNFTS !== null) {
+      storeJSON();
+    }
+  }, [ListedNFTS]);
 
   return (
-    <MarketPlace
-      offerTitle={offerTitle}
-      imgSrc={imgSrc}
-      propertyTitle={propertyTitle}
-      category={category}
-      location={location}
-      shareType={shareType}
-      description={description}
-      equityInfo={equityInfo}
-      ownerName={ownerName}
-    />
+    <div className="min-h-screen bg-gradient-to-b from-black to-blue-900 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    {
+      (ListedNFTS && fetchedData) ? fetchedData.map((nft)=>
+        <MarketPlaceCard
+      offerTitle={"kuchbhi"}
+      imgSrc={nft.Image}
+      propertyTitle={nft._Id}
+      category={"kuchbhi"}
+      location={nft.Address}
+      shareType={"kuchbhi"}
+      description={nft.Description}
+      equityInfo={"kuchbhi"}
+      ownerName={"kuchbhi"}
+      />): <div>Loading....</div>
+    }
+  </div>
+    </div>
+  
   );
 };
 
