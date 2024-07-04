@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import useSigner from "./useWallet";
 import axios from 'axios';
 
-const MarketPlace = ({ offerTitle, imgSrc, propertyTitle, category, location, shareType, description, equityInfo, ownerName }) => {
+const MarketPlaceCard = ({ offerTitle, imgSrc, propertyTitle, category, location, shareType, description, equityInfo, ownerName }) => {
   
   const { signer, address } = useSigner();
   let contractAddress = "0x27490D3a6AEDC829510CFa699B9B48749E4f3bfF";
@@ -13,40 +13,7 @@ const MarketPlace = ({ offerTitle, imgSrc, propertyTitle, category, location, sh
 
 
   const handleClick = async() =>{
-    const metaData = JSON.stringify({
-      pinataContent: {
-        Name: propertyTitle,
-        Description: description,
-        Address: location,
-        Image: imgSrc
-      },
-      pinataMetadata: {
-        name: "nft MetaData"
-      }
-    });
-
-    const resFile = await axios({
-      method: "POST",
-      url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
-      data: metaData,
-      headers: {
-          'pinata_api_key': `bfb79ad32b49da703c3b`,
-          'pinata_secret_api_key': `e68f3eac05373ca5742ca53020d9ebad0d5f6c9651d84091b28c3b7b6bdf303a`,
-          "Content-Type": "application/json"
-      },
-    });
-    const uri = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-    // console.log(uri);
     
-    const tokenId = await contract.createNFT.staticCall(uri);
-    // console.log(tokenId);
-
-    await contract.createNFT(uri);
-    const EtherToWei = ethers.parseEther("0.0001");
-    await contract.listNFT(tokenId,EtherToWei, {
-      gasLimit: 1000000
-    });
-    // await contract.createNFTandList(contractAddress,uri,address,EtherToWei);
   }
   return (
     <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center">
@@ -77,4 +44,4 @@ const MarketPlace = ({ offerTitle, imgSrc, propertyTitle, category, location, sh
   );
 };
 
-export default MarketPlace;
+export default MarketPlaceCard;

@@ -1,5 +1,5 @@
 import React from 'react';
-import MarketPlace from './MarketPlace';
+import MarketPlaceCard from './MarketPlaceCard';
 
 const MarketPlaceProps = () => {
   const offerTitle = "Available Offer";
@@ -13,7 +13,7 @@ const MarketPlaceProps = () => {
   const ownerName = "OWNER NAME";
 
   return (
-    <MarketPlace
+    <MarketPlaceCard
       offerTitle={offerTitle}
       imgSrc={imgSrc}
       propertyTitle={propertyTitle}
