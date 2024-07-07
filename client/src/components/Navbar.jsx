@@ -1,20 +1,60 @@
 import React from "react";
-import { ConnectButton, SignerProvider } from "./useWallet";
-import { Link } from "react-router-dom";
+import { ConnectButton } from "./useWallet";
 
-const Navbar = () => {
+const Navbar = ({setWalletConnected}) => {
   return (
-      <nav className="bg-none text-white py-4 px-8 flex justify-between items-center fixed top-0 w-full">
-        <div className="flex items-center space-x-4">
-          <img src="logo.png" alt="Logo" className="h-8" /> {/* Replace with your logo */}
-          <div className="flex space-x-16"> {/* Container for navigation links */}
-          <Link to="/" className="hover:text-gray-300">Dashboard</Link>
-            <Link to="/marketplace" className="hover:text-gray-300">MarketPlace</Link>
-            <Link to="/register" className="hover:text-gray-300">RegisterProperty</Link>
-          </div>
+      <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3" style={{
+        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+      }}>
+        <div className="col-md-3 mb-2 mb-md-0">
+          <a
+            href="/"
+            className="d-inline-flex link-body-emphasis text-decoration-none"
+          >
+            <svg
+              className="bi"
+              width="40"
+              height="32"
+              role="img"
+              aria-label="Bootstrap"
+            >
+              <use xlinkHref="#bootstrap"></use>
+            </svg>
+          </a>
         </div>
-        <ConnectButton />
-      </nav>
+
+        <ul className="nav col-12 col-md mb-2 mb-md-0" style={{
+          display: "flex",
+          justifyContent: "space-around",
+          paddingRight: "200px",
+        
+        }}>
+          <li>
+            <a href="#" className="nav-link px-2 link-secondary">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2  link-secondary">
+              Features
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2  link-secondary">
+              FAQs
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2  link-secondary">
+              About
+            </a>
+          </li>
+        </ul>
+
+        <div className="col-md-3 text-end">
+          <ConnectButton setWalletConnected={setWalletConnected}/>
+        </div>
+      </header>
   );
 };
 

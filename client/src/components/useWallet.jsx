@@ -29,6 +29,7 @@ export const SignerProvider = ({ children }) => {
       const address = await signer.getAddress();
       setSigner(signer);
       setAddress(address);
+
     } catch (e) {
       console.log(e);
     }
@@ -56,13 +57,19 @@ const AddressAvatar = ({ address }) => {
         alt="avatar"
         className="mr-2 rounded-full h-10 w-10"
       />
-      <span>{shortAddress}</span>
+      <span style={{
+        color: "white"
+      }}>{shortAddress}</span>
     </div>
   );
 };
 
-export const ConnectButton = () => {
+export const ConnectButton = ({setWalletConnected}) => {
   const { address, loading, connectWallet } = useSigner();
+
+  if(address){
+    setWalletConnected(true);
+  }
 
   if (address) return <AddressAvatar address={address} />;
   return (

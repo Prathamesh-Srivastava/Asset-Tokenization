@@ -2,7 +2,6 @@ import React from 'react';
 import NFT_Trade_contract from "../../../artifacts/contracts/NFT_Trade.sol/NFT_Trade.json";
 import { ethers } from "ethers";
 import useSigner from "./useWallet";
-import axios from 'axios';
 
 const MarketPlaceCard = ({ offerTitle, imgSrc, propertyTitle, category, location, shareType, description, equityInfo, ownerName }) => {
   
@@ -15,8 +14,9 @@ const MarketPlaceCard = ({ offerTitle, imgSrc, propertyTitle, category, location
   const handleClick = async() =>{
     
   }
+  
   return (
-    <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div className="bg-gray-900 p-4 rounded-lg shadow-lg text-white w-[22rem]">
         <div className="bg-[#494370] text-white text-sm px-2 py-1 rounded-full w-max mb-2">
           {offerTitle}

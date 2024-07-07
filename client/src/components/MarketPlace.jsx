@@ -50,7 +50,7 @@ const MarketPlace = ({ offerTitle, imgSrc, propertyTitle, category, location, sh
   }
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-blue-900 py-10 flex justify-center items-center">
+    <div className="min-h-screen py-10 flex justify-center items-center">
 
     <div className="bg-gray-900 p-4 rounded-lg shadow-lg text-white w-[22rem]">
       <div className="bg-[#494370] text-white text-sm px-2 py-1 rounded-full w-max mb-2">

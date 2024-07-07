@@ -47,7 +47,7 @@ const MarketPlaceProps = () => {
   }, [ListedNFTS]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-blue-900 py-10">
+    <div className="min-h-screen py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
     {
