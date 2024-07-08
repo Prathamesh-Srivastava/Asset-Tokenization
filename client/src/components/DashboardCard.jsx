@@ -4,28 +4,16 @@ import { ethers } from "ethers";
 import useSigner from "./useWallet";
 
 const DashboardCard = ({
-  offerTitle,
-  imgSrc,
-  propertyTitle,
-  category,
-  location,
-  shareType,
-  description,
-  equityInfo,
-  ownerName,
+  PropertyID,
+  OwnerAddress,
+  OwnerName,
+  OwnerID,
+  PropertyName,
+  Location,
+  Image
 }) => {
-  const { signer, address } = useSigner();
-  let contractAddress = "0x27490D3a6AEDC829510CFa699B9B48749E4f3bfF";
-  const contractABI = NFT_Trade_contract.abi;
-  const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
-  const handleClick = async () => {};
-
   return (
     <>
-      {/* <div className="bg-[#494370] text-white text-sm px-2 py-1 rounded-full w-max mb-2">
-        {offerTitle}
-      </div> */}
       <div
         className="flex space-x-2 mb-3"
         style={{
@@ -33,7 +21,7 @@ const DashboardCard = ({
         }}
       >
         <img
-          src={imgSrc}
+          src={Image}
           alt="Property"
           className="w-32 h-40 object-cover rounded-md"
           style={{
@@ -47,22 +35,23 @@ const DashboardCard = ({
           flex: "1",
         }}>
           <p className="text-lg font-semibold">
-            Owner Name : {propertyTitle}
+            PropertyID : {PropertyID}
           </p>
           <p className="text-lg font-semibold">
-            Category : {category}
+            OwnerAddress : {OwnerAddress}
           </p>
           <p className="text-lg font-semibold">
-            Location: {location}
+          OwnerName: {OwnerName}
           </p>
           <p className="text-lg font-semibold">
-            Share Type: {shareType}
+          OwnerID: {OwnerID}
           </p>
-          <p className="text-lg font-semibold">{description}</p>
-          {/* <div className="flex justify-between items-center mb-3"> */}
-            <p className="text-lg font-semibold">{equityInfo}</p>
-            <p className="text-lg font-semibold">{ownerName}</p>
-          {/* </div> */}
+          <p className="text-lg font-semibold">
+          PropertyName: {PropertyName}
+          </p>
+          <p className="text-lg font-semibold">
+          Location: {Location}
+          </p>
         </div>
       </div>
     </>
