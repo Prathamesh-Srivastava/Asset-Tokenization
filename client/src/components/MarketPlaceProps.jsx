@@ -6,7 +6,7 @@ import useSigner from "./useWallet";
 
 const MarketPlaceProps = () => {
   const {signer, address} = useSigner();
-  let contractAddress = "0xD1698E280345a01D9f26B415562554844d46F565";
+  let contractAddress = "0x5B1355045710dFF6299e66B43d95f65c0cF7b9ea";
   const contractABI = NFT_Trade_contract.abi;
   const contract = new ethers.Contract(contractAddress,contractABI,signer);
 
@@ -29,7 +29,7 @@ const MarketPlaceProps = () => {
     .then(respone => respone.json())
     .then(responseData => {
       setFetchedData(prevData => {
-        if (!prevData.some(data => data._Id === responseData._Id)) {
+        if (!prevData.some(data => data.PropertyID === responseData.PropertyID)) {
           responseData.price = prop.price;
           responseData.seller = prop.seller;
           responseData.tokenId = prop._Id;

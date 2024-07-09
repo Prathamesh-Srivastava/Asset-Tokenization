@@ -19,32 +19,52 @@ const MarketPlaceCard = ({
   
   const { signer, address } = useSigner();
 
-  let nft_trade_address = "0xD1698E280345a01D9f26B415562554844d46F565";
+  const nft_trade_address = "0x5B1355045710dFF6299e66B43d95f65c0cF7b9ea";
   const nftABI = NFT_Trade_contract.abi;
   const nft_trade = new ethers.Contract(nft_trade_address,nftABI,signer);
 
-  let register_prop_address = "0x8042679c4499FcB314F07f6ac28409f4ff2aFA70";
+  const register_prop_address = "0x8042679c4499FcB314F07f6ac28409f4ff2aFA70";
   const registerABI = Register_Property_contract.abi;
   const register_prop = new ethers.Contract(register_prop_address,registerABI,signer);
 
+  nft_trade.on("NFTCreated", (tokenId, uri) => {
+      console.log('NFTCreated Event:', tokenId, uri);
+  });
 
-  const handleClick = async() =>{
-    try {
-      if(address.toString() === Seller){
-        await nft_trade.unList(TokenID, {
-          gasLimit: 100000
-        });
-      }else{
-        await nft_trade.buyNFT(TokenID,{
-          gasLimit: 100000
-        });
-        const propId = BigInt(PropertyID);
-        await register_prop.changeOwner(propId,address);
-      }
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    }
+  nft_trade.on("NFTListed", (tokenId, price, seller) => {
+      console.log('NFTListed Event:', tokenId, price, seller);
+  });
+
+  nft_trade.on("NFTUnlisted", (tokenId, owner) => {
+      console.log('NFTUnlisted Event:', tokenId, owner);
+  });
+
+  nft_trade.on("NFTBought", (tokenId, buyer, price) => {
+      console.log('NFTBought Event:', tokenId, buyer, price);
+  });
+
+  nft_trade.on("Debug", (message, tokenId, user) => {
+      console.log('Debug Event:', message, tokenId, user);
+  });
+
+  const handleUnlist = async() =>{
+    console.log(TokenID);
+    // await nft_trade.unList(TokenID, {
+    //   gasLimit: 1000000
+    // });
+  }
+
+  const handleBuy = async()=>{
+    console.log(TokenID);
+    // const approveTx = await nft_trade.approve(nft_trade_address, TokenID,{
+    //   gasLimit:100000
+    // });
+    // await nft_trade.buyNFT(TokenID,{
+    //   value: Price,
+    //   gasLimit: 1000000
+    // });
+    // const flag = await nft_trade.checkListing(TokenID);
+    // console.log(flag);
   }
   
   return (
@@ -65,10 +85,9 @@ const MarketPlaceCard = ({
           </div>
         </div>
         <p className="text-xs mb-3">{Location}</p>
-        <button className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
-        onClick={handleClick}>
-          {address.toString() === Seller ? "Unlist" : "Buy"}
-        </button>
+          {address.toString() === Seller ? <button className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
+        onClick={handleUnlist}> Unlist </button>: <button className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
+        onClick={handleBuy}> Buy </button>}
       </div>
     </div>
   );

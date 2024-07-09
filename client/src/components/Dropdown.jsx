@@ -16,7 +16,7 @@ const Dropdown = ({ property, index }) => {
   };
 
   const { signer, address } = useSigner();
-  let contractAddress = "0xD1698E280345a01D9f26B415562554844d46F565";
+  let contractAddress = "0x5B1355045710dFF6299e66B43d95f65c0cF7b9ea";
   const contractABI = NFT_Trade_contract.abi;
   const contract = new ethers.Contract(contractAddress,contractABI,signer);
 
@@ -49,15 +49,20 @@ const Dropdown = ({ property, index }) => {
     const uri = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
     // console.log(uri);
     
-    // const tokenId = await contract.createNFT.staticCall(uri);
-    // console.log(tokenId);
+    const tokenId = await contract.createNFT.staticCall(uri);
+    console.log(tokenId);
 
-    // await contract.createNFT(uri);
+    await contract.createNFT(uri);
     const EtherToWei = ethers.parseEther("0.0001");
-    // await contract.listNFT(tokenId,EtherToWei, {
-    //   gasLimit: 1000000
+    await contract.listNFT(tokenId,EtherToWei, {
+      gasLimit: 1000000
+    });
+
+    // const approveTx = await contract.approve(contractAddress, tokenId,{
+    //   gasLimit:1000000
     // });
-    await contract.createNFTandList(contractAddress,uri,address,EtherToWei);
+    // await approveTx.wait();
+    // await contract.createNFTandList(contractAddress,uri,address,EtherToWei);
   }
 
   return (
