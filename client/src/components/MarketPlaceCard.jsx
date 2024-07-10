@@ -49,9 +49,9 @@ const MarketPlaceCard = ({
 
   const handleUnlist = async() =>{
     console.log(TokenID);
-    // await nft_trade.unList(TokenID, {
-    //   gasLimit: 1000000
-    // });
+    await nft_trade.unList(TokenID, {
+      gasLimit: 1000000
+    });
   }
 
   const handleBuy = async()=>{
@@ -59,10 +59,10 @@ const MarketPlaceCard = ({
     // const approveTx = await nft_trade.approve(nft_trade_address, TokenID,{
     //   gasLimit:100000
     // });
-    // await nft_trade.buyNFT(TokenID,{
-    //   value: Price,
-    //   gasLimit: 1000000
-    // });
+    await nft_trade.buyNFT(TokenID,{
+      value: Price,
+      gasLimit: 1000000
+    });
     // const flag = await nft_trade.checkListing(TokenID);
     // console.log(flag);
   }

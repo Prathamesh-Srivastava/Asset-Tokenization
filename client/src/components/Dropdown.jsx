@@ -57,11 +57,15 @@ const Dropdown = ({ property, index }) => {
     await contract.listNFT(tokenId,EtherToWei, {
       gasLimit: 1000000
     });
-
+    const approveTx = await contract.approve(contractAddress, tokenId,{
+      gasLimit:1000000
+    });
+    await approveTx.wait();
+    
     // const approveTx = await contract.approve(contractAddress, tokenId,{
     //   gasLimit:1000000
     // });
-    // await approveTx.wait();
+    
     // await contract.createNFTandList(contractAddress,uri,address,EtherToWei);
   }
 
