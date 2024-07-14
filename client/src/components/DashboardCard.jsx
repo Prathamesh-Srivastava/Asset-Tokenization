@@ -1,7 +1,4 @@
 import React from "react";
-import NFT_Trade_contract from "../../../artifacts/contracts/NFT_Trade.sol/NFT_Trade.json";
-import { ethers } from "ethers";
-import useSigner from "./useWallet";
 
 const DashboardCard = ({
   PropertyID,

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import RegisterProperty from './components/RegisterProperty'
 import Dashboard from './components/Dashboard'
 import MarketPlaceProps from './components/MarketPlaceProps'
+import AdminPage from './components/AdminPage'
 import SideBar from './components/SideBar'
 import { useState } from 'react'
 
@@ -13,10 +14,6 @@ function App() {
 
   return (
     <>
-      {/* <Navbar/>
-      <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen flex justify-center items-center pt-10">
-        <MarketPlace/>
-      </div> */}
       <BrowserRouter>
       <div className="app-container " style={{
         display: "flex",
@@ -35,6 +32,7 @@ function App() {
           <Route path="/" element={<Dashboard walletConnected={walletConnected}/>} />
               <Route path="/marketplace" element={<MarketPlaceProps />} />
               <Route path="/register" element={<RegisterProperty />} />
+              <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>
       </div>

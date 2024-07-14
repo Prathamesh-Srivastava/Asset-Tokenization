@@ -1,24 +1,24 @@
 import React, { useEffect, useState} from 'react';
-import MarketPlaceCard from './MarketPlaceCard';
-import Register_Property_contract from "../../../artifacts/contracts/RegisterProperty.sol/RegisterProperty.json"
+import AdminCard from "./AdminCard";
+import Register_Property_contract from "../../../artifacts/contracts/RegisterProperty.sol/RegisterProperty.json";
 import { ethers } from "ethers";
 import useSigner from "./useWallet";
 
-const MarketPlaceProps = () => {
+const AdminPage = () => {
   const {signer, address} = useSigner();
   let contractAddress = "0x22fb69a56F701402aB0304c7041823058b981329";
   const contractABI = Register_Property_contract.abi;
   const contract = new ethers.Contract(contractAddress,contractABI,signer);
 
-  const [listedProperties,setListedProperties] = useState([]);
+  const [intrestedProperties,setIntrestedProperties] = useState([]);
 
   useEffect(()=>{
-    const getListedProperties = async () => {
-      const listedPropertyArray = await contract.showListed();
-      setListedProperties(listedPropertyArray);
+    const getIntrestedProperties = async () => {
+      const intrestedPropertyArray = await contract.showIntrested();
+      setIntrestedProperties(intrestedPropertyArray);
     };
 
-    getListedProperties();
+    getIntrestedProperties();
   },[signer]);
 
   return (
@@ -26,8 +26,8 @@ const MarketPlaceProps = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
     {
-      (listedProperties.length > 0) ? listedProperties.map((prop)=>
-        <MarketPlaceCard
+      (intrestedProperties.length > 0) ? intrestedProperties.map((prop)=>
+        <AdminCard
       PropertyID = {prop._ID}
       OwnerAddress = {prop.owner}
       OwnerName = {prop.owner_name}
@@ -37,6 +37,7 @@ const MarketPlaceProps = () => {
       Image = {prop.ImageUrl}
       Price = {prop.Price}
       Seller = {prop.owner}
+      Buyer = {prop.Buyer}
       />): <div>Loading....</div>
     }
   </div>
@@ -45,4 +46,4 @@ const MarketPlaceProps = () => {
   );
 };
 
-export default MarketPlaceProps;
+export default AdminPage;

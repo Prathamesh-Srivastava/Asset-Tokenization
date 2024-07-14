@@ -20,9 +20,9 @@ const RegisterProperty = () => {
         const formData = new FormData();
         formData.append("file", image);
 
-        let contractAddress = "0x8042679c4499FcB314F07f6ac28409f4ff2aFA70";
+        let contractAddress = "0x22fb69a56F701402aB0304c7041823058b981329";
         const contract = new ethers.Contract(contractAddress, RegisterProperty_contract.abi, signer);
-        // console.log(contract);
+        console.log(contract);
 
         const resFile = await axios({
           method: "POST",
@@ -36,7 +36,7 @@ const RegisterProperty = () => {
         });
 
       const fileHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-      // console.log(fileHash); 
+      console.log(fileHash); 
 
       await contract.addProperty(address, ownerName, ownerIdNumber, propertyName, propertylocation, fileHash);
 

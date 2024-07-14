@@ -7,7 +7,7 @@ import Dropdown from './Dropdown';
 
 const Dashboard = ({walletConnected}) => {
   const { signer, address } = useSigner();
-  let contractAddress = "0x8042679c4499FcB314F07f6ac28409f4ff2aFA70";
+  let contractAddress = "0x22fb69a56F701402aB0304c7041823058b981329";
   let contractABI = RegisterProperty_contract.abi;
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
   const [properties, setProperties] = useState([]);
