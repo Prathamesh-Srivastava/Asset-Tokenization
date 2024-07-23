@@ -1,4 +1,4 @@
-const WelcomeMessage = ({walletConnected,message}) =>{
+const WelcomeMessage = ({walletConnected}) =>{
     return (
         <center style={{
             margin: "100px 0",
