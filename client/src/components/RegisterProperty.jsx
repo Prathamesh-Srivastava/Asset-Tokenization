@@ -64,7 +64,9 @@ const RegisterProperty = () => {
             <br />
             Enter Your Property Details Now
           </h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} style={{
+            color: "white",
+          }}>
           <input
             className="w-full px-3 py-2 mb-2 border rounded"
             type="text"

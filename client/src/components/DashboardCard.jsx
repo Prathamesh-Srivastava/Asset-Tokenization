@@ -27,7 +27,7 @@ const DashboardCard = ({
             objectFit: "inherit",
           }}
         />
-        <div className="bg-[#1B2532] bg-opacity-91 p-2 rounded-lg w-full" style={{
+        <div className="bg-[#1B2532] bg-opacity-91 p-2 rounded-lg" style={{
           color: "rgb(112, 139, 156)",
           flex: "1",
         }}>

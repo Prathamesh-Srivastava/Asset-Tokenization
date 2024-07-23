@@ -3,6 +3,7 @@ import AdminCard from "./AdminCard";
 import Register_Property_contract from "../../../artifacts/contracts/RegisterProperty.sol/RegisterProperty.json";
 import { ethers } from "ethers";
 import useSigner from "./useWallet";
+import WelcomeMessage from './WelcomeMessage';
 
 const AdminPage = () => {
   const {signer, address} = useSigner();
@@ -22,7 +23,7 @@ const AdminPage = () => {
   },[signer]);
 
   return (
-    <div className="min-h-screen py-10">
+    <div className="">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
     {
@@ -38,7 +39,7 @@ const AdminPage = () => {
       Price = {prop.Price}
       Seller = {prop.owner}
       Buyer = {prop.Buyer}
-      />): <div>Loading....</div>
+      />): <WelcomeMessage  />
     }
   </div>
     </div>
