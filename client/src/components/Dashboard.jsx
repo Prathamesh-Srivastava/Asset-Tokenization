@@ -18,7 +18,7 @@ const Dashboard = ({ walletConnected }) => {
       setProperties(propertyArray);
     };
     getProperties();
-  }, [signer]);
+  }, [signer,properties]);
 
   return (
     <div className="min-h-screen py-10">

@@ -75,15 +75,6 @@ const AdminCard = ({
           cursor: "pointer",
         }}
       >
-        <div
-          className="bg-[#494370] text-white text-sm px-2 py-1 rounded-full w-max mb-2"
-          style={{
-            width: "100%",
-            textAlign: "center",
-          }}
-        >
-          PropertyId : {PropertyID}
-        </div>
         <img
           src={Image}
           alt="Property"
@@ -124,10 +115,13 @@ const AdminCard = ({
                 Buyer:
                 <br /> {Buyer}
               </p>
+              <p className="text-xs">
+                Location:
+                <br /> {Location}
+              </p>
             </div>
           </div>
         )}
-        <p className="text-xs mb-3">{Location}</p>
         <button
           className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
           onClick={handleClick}

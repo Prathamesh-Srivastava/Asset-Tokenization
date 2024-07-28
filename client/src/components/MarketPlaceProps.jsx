@@ -19,7 +19,7 @@ const MarketPlaceProps = () => {
     };
 
     getListedProperties();
-  }, [signer]);
+  }, [signer,listedProperties]);
 
   return (
     <div className="min-h-screen py-10">

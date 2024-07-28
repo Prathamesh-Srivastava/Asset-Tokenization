@@ -8,7 +8,7 @@ import useSigner from "./useWallet";
 const Dropdown = ({ property, index }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sellClicked, setSellClicked] = useState(false);
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -24,7 +24,7 @@ const Dropdown = ({ property, index }) => {
       alert("Please enter a valid price");
       return;
     }
-    const EthertoWei = ethers.parseEther("0.01");
+    const EthertoWei = ethers.parseEther(price);
     await contract.listProperty(property._ID, EthertoWei);
   };
 
@@ -99,7 +99,7 @@ const Dropdown = ({ property, index }) => {
               }}>₹</span>
               <input
                 className=" py-2 px-4 rounded-full text-sm"
-                type="number"
+                type="text"
                 style={{
                   fontSize: "1.3rem",
                   fontWeight: "bold",

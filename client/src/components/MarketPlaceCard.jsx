@@ -35,7 +35,7 @@ const MarketPlaceCard = ({
     <div className="min-h-screen flex justify-center items-center">
       <div className="bg-gray-900 p-4 rounded-lg shadow-lg text-white w-[22rem]">
         <div className="bg-[#494370] text-white text-sm px-2 py-1 rounded-full w-max mb-2">
-          {PropertyID}
+          {PropertyID.toString()}
         </div>
         <div className="flex space-x-2 mb-3">
           <img src={Image} alt="Property" className="w-32 h-40 object-cover rounded-md" />
@@ -46,9 +46,9 @@ const MarketPlaceCard = ({
             <p className="text-xs">Owner_walletAddress:<br/> {OwnerAddress}</p>
             <p className="text-xs">Price<br/> {ethers.formatEther(Price).toString()}</p>
             <p className="text-xs">Seller:<br/> {Seller}</p>
+            <p className="text-xs mb-3">Location:<br/>{Location}</p>
           </div>
         </div>
-        <p className="text-xs mb-3">{Location}</p>
           {address.toString() === Seller ? <button className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
         onClick={handleUnlist}> Unlist </button>: <button className="bg-gray-200 text-black py-2 px-4 rounded-full w-full text-sm"
         onClick={handleShowIntrest}> Show Intrest </button>}
